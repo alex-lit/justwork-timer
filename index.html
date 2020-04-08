@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    test
+  </body>
+  <script>
+    const date = new Date();
+    date.toLocaleTimeString();
+
+    /**
+     * Устанавтивает таймер
+     * @param {number} seconds
+     */
+    function setTimer(seconds) {
+      const startTime = Date.now();
+      const endTime = startTime + seconds * 1000;
+
+      const interval = setInterval(() => {
+        const cirrentTime = Date.now();
+        const millisecondsLeft = endTime - cirrentTime;
+        console.log(millisecondsLeft);
+
+        if (millisecondsLeft === 0) clearInterval(interval);
+        // alert('done');
+      }, 1);
+    }
+  </script>
+</html>
