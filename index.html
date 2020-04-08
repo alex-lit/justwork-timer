@@ -1,33 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Timer</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    test
+    <div id="app" class="app" v-cloak>
+      <transition-group
+        name="app-timer-transition-"
+        class="app__timers"
+        tag="section"
+      >
+        <!-- countdown-timer -->
+        <countdown-timer
+          v-for="timer in timers"
+          :key="timer.uid"
+          inline-template
+          @remove="removeTimer(timer.uid)"
+        >
+          <article class="timer">
+            <input
+              v-if="status === 'notInit'"
+              type="number"
+              min="0"
+              v-model="value"
+              class="timer__input"
+              placeholder="Время, сек."
+            />
+            <span v-else class="timer__label">{{ label }}</span>
+            <button
+              v-if="status === 'notInit'"
+              type="button"
+              class="timer__action timer__action--run"
+              :disabled="!value"
+              @click="setTimer(value, finishHandler)"
+            >
+              >
+            </button>
+            <button
+              type="button"
+              class="timer__action timer__action--remove"
+              @click="$emit('remove')"
+            >
+              x
+            </button>
+          </article>
+        </countdown-timer>
+        <!-- /countdown-timer -->
+      </transition-group>
+
+      <nav class="app__nav">
+        <button type="button" class="app__add-timer" @click="addTimer">
+          + Добавить таймер
+        </button>
+      </nav>
+    </div>
   </body>
-  <script>
-    const date = new Date();
-    date.toLocaleTimeString();
-
-    /**
-     * Устанавтивает таймер
-     * @param {number} seconds
-     */
-    function setTimer(seconds) {
-      const startTime = Date.now();
-      const endTime = startTime + seconds * 1000;
-
-      const interval = setInterval(() => {
-        const cirrentTime = Date.now();
-        const millisecondsLeft = endTime - cirrentTime;
-        console.log(millisecondsLeft);
-
-        if (millisecondsLeft === 0) clearInterval(interval);
-        // alert('done');
-      }, 1);
-    }
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="app.js"></script>
 </html>
