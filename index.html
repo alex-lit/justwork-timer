@@ -20,20 +20,20 @@
           inline-template
           @remove="removeTimer(timer.uid)"
         >
-          <article class="timer">
+          <article class="countdown-timer">
             <input
               v-if="status === 'notInit'"
               type="number"
               min="0"
               v-model="value"
-              class="timer__input"
+              class="countdown-timer__input"
               placeholder="Время, сек."
             />
-            <span v-else class="timer__label">{{ label }}</span>
+            <span v-else class="countdown-timer__label">{{ label }}</span>
             <button
               v-if="status === 'notInit'"
               type="button"
-              class="timer__action timer__action--run"
+              class="countdown-timer__action countdown-timer__action--run"
               :disabled="!value"
               @click="setTimer(value, finishHandler)"
             >
@@ -41,7 +41,7 @@
             </button>
             <button
               type="button"
-              class="timer__action timer__action--remove"
+              class="countdown-timer__action countdown-timer__action--remove"
               @click="$emit('remove')"
             >
               x

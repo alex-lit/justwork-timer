@@ -60,7 +60,7 @@ Vue.component("countdown-timer", {
           this.status = "end";
           if (typeof callback === "function") callback(this.getCurrentTime());
         }
-      }, 1);
+      }, 16);
     },
 
     /**

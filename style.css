@@ -138,7 +138,7 @@ button[disabled] {
   --timer-line: 32px;
 }
 
-.timer {
+.countdown-timer {
   position: relative;
   display: flex;
   background-color: var(--white);
@@ -151,15 +151,15 @@ button[disabled] {
   width: 100%;
 }
 
-.timer:hover {
+.countdown-timer:hover {
   box-shadow: var(--box-shadow--active);
 }
 
-.timer > :not(:last-child) {
+.countdown-timer > :not(:last-child) {
   margin-right: 10px;
 }
 
-.timer__input {
+.countdown-timer__input {
   border-radius: 4px;
   background-color: var(--white);
   height: var(--timer-line);
@@ -171,13 +171,13 @@ button[disabled] {
   flex-grow: 1;
 }
 
-.timer__label {
+.countdown-timer__label {
   min-width: 320px;
   flex-grow: 1;
   font-weight: 300;
 }
 
-.timer__action {
+.countdown-timer__action {
   width: var(--timer-line);
   height: var(--timer-line);
   border-radius: 50%;
@@ -189,10 +189,10 @@ button[disabled] {
   color: var(--white);
 }
 
-.timer__action--run {
+.countdown-timer__action--run {
   background-color: var(--green);
 }
 
-.timer__action--remove {
+.countdown-timer__action--remove {
   background-color: var(--red);
 }
